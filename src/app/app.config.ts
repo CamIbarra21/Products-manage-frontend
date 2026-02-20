@@ -7,6 +7,7 @@ import Material from '@primeuix/themes/material';
 import Lara  from '@primeuix/themes/lara';
 import { routes } from './app.routes';
 import { MessageService } from 'primeng/api';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +20,7 @@ export const appConfig: ApplicationConfig = {
         preset: Aura
       }
     }),
-    MessageService
+    MessageService,
+    provideHttpClient(withInterceptorsFromDi())
   ]
 };
