@@ -6,6 +6,7 @@ import Aura from '@primeuix/themes/aura';
 import Material from '@primeuix/themes/material';
 import Lara  from '@primeuix/themes/lara';
 import { routes } from './app.routes';
+import { MessageService } from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +18,7 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: Aura
       }
-    })
+    }),
+    MessageService
   ]
 };

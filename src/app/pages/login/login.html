@@ -1,0 +1,26 @@
+<p-toast></p-toast>
+
+<div class="form-section">
+    <h2>Hi again</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <input id="username" formControlName="username" pInputText placeholder="Username" />
+        </p-inputgroup>
+
+        <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="pi pi-key"></i>
+            </p-inputgroup-addon>
+            <p-password id="password" formControlName="password" [feedback]="false" [toggleMask]="true" placeholder="Password"/>
+        </p-inputgroup>
+
+        <button pButton>
+            <i class="pi pi-arrow-up-right" pButtonIcon></i>
+            <span pButtonLabel><b>LOGIN</b></span>
+        </button>
+    </form>
+</div>
