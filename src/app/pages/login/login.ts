@@ -8,10 +8,11 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { Router } from '@angular/router';
 import { ToastService } from '../../services/toast-service';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-login',
-  imports: [ ToastModule, ButtonModule, PasswordModule, InputGroupModule, InputGroupAddonModule, InputTextModule, ReactiveFormsModule ],
+  imports: [  ToastModule, ButtonModule, PasswordModule, InputGroupModule, InputGroupAddonModule, InputTextModule, ReactiveFormsModule ],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -29,14 +30,19 @@ export class Login implements OnInit {
   }
 
   login() {
-    const username = this.loginForm.value.username;
-    const password = this.loginForm.value.password;
+    if (this.loginForm.valid) {
+      const username = this.loginForm.value.username;
+      const password = this.loginForm.value.password;
 
-    if (username == 'innova' && password == 'innova123') {
-      this.toastMessage.showSuccess(`Welcome ${username}`);
-      //this.router.navigate(['home']);
+      if (username == 'innova' && password == 'innova123') {
+        this.toastMessage.showSuccess(`Welcome ${username}`);
+        //this.router.navigate(['home']);
+      } else {
+        this.toastMessage.showError('Username or password is incorrect');
+      }
     } else {
-      this.toastMessage.showError('Username or password is incorrect');
+      this.toastMessage.showWarn('Fill the required fields')
     }
+    
   }
 }
