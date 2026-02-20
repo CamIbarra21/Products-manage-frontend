@@ -5,7 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products-list',
@@ -16,7 +16,7 @@ import { RouterLink } from '@angular/router';
 export class ProductsList implements OnInit {
   products: any[] = [];
 
-  constructor (private pService: ProductService, private toastMessage: ToastService) {}
+  constructor (private pService: ProductService, private toastMessage: ToastService, private router: Router) {}
 
   ngOnInit(): void {
     this.pService.getProducts().subscribe({
@@ -41,6 +41,13 @@ export class ProductsList implements OnInit {
   }
 
   deleteProduct (producto: any) {
-
+    console.log(producto)
+    this.pService.deleteProduct(producto.id).subscribe({
+        next: () => {
+          this.toastMessage.showSuccess("Producto eliminado");
+          this.router.navigate(['/inside/products']);
+        },
+        error: () => this.toastMessage.showError("No se pudo eliminar el producto")
+      });
   }
 }

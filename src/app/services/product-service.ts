@@ -18,7 +18,11 @@ export class ProductService {
   }
 
   getById(id: string): Observable<any> {
-    return this.http.get<any>(`/api/${id}`);
+    const headers = new HttpHeaders({
+      'x-api-key': this.apiKey
+    });
+
+    return this.http.get<any>(`/api/${id}`, { headers });
   }
 
   addProduct(product: any): Observable<any> {
@@ -33,6 +37,9 @@ export class ProductService {
   }
 
   deleteProduct(id: string): Observable<void> {
-    return this.http.delete<void>(`/api/${id}`);
+    const headers = new HttpHeaders({
+      'x-api-key': this.apiKey
+    });
+    return this.http.delete<void>(`/api/${id}`, { headers });
   }
 }
