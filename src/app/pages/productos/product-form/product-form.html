@@ -1,0 +1,43 @@
+<p-toast></p-toast>
+
+<div class="form-section">
+    <h2>{{ isUpdate ? 'Editar Producto' : 'Nuevo Producto' }}</h2>
+
+    <form [formGroup]="productForm" (ngSubmit)="save()">
+        <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <input id="name" formControlName="name" pInputText placeholder="Product name" />
+        </p-inputgroup>
+
+        <!--
+        <div>
+            <input type="text" pInputText [(ngModel)]="value"/>
+            <p-slider [(ngModel)]="value" [min]="0" [max]="10" class="w-full" (onChange)="setFieldCount(value)"/>
+        </div>-->
+
+
+        <p-inputgroup>
+            <input id="data1" formControlName="data1" pInputText placeholder="Data 1" />
+            <input id="data2" formControlName="data2" pInputText placeholder="Data 2" />
+            <input id="data3" formControlName="data3" pInputText placeholder="Data 3" />
+            <input id="data4" formControlName="data4" pInputText placeholder="Data 4" />
+            <input id="data5" formControlName="data5" pInputText placeholder="Data 5" />
+        </p-inputgroup>
+
+
+
+
+        <button pButton type="submit">
+            <i class="pi pi-save" pButtonIcon></i>
+            <span pButtonLabel><b>Save</b></span>
+        </button>
+
+        <button routerLink="inside/products" pButton>
+            <i class="pi pi-times" pButtonIcon></i>
+            <span pButtonLabel><b>Cancel</b></span>
+        </button>
+
+    </form>
+</div>

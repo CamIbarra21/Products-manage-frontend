@@ -5,10 +5,11 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products-list',
-  imports: [ButtonModule, RippleModule, ToastModule, TableModule],
+  imports: [ButtonModule, RippleModule, ToastModule, TableModule, RouterLink],
   templateUrl: './products-list.html',
   styleUrl: './products-list.css',
 })

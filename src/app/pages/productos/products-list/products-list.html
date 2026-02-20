@@ -1,6 +1,15 @@
 <p-toast></p-toast>
 
 <div class="card">
+    <div class="mb-3">
+        <p-button 
+        label="Nuevo Producto" 
+        icon="pi pi-plus" 
+        routerLink="/inside/products/add" 
+        severity="success">
+        </p-button>
+    </div>
+
     <p-table
         [value]="products"
         [paginator]="true"

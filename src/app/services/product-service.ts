@@ -17,19 +17,22 @@ export class ProductService {
     return this.http.get<any[]>(`/api`, { headers });
   }
 
-  getById(id: number): Observable<any> {
+  getById(id: string): Observable<any> {
     return this.http.get<any>(`/api/${id}`);
   }
 
   addProduct(product: any): Observable<any> {
-    return this.http.post<any>('/api', product);
+    const headers = new HttpHeaders({
+      'x-api-key': this.apiKey
+    });
+    return this.http.post<any>('/api', product, { headers });
   }
 
-  updateProduct(id: number, product: any): Observable<any> {
+  updateProduct(id: string, product: any): Observable<any> {
     return this.http.put<any>(`/api/${id}`, product);
   }
 
-  deleteProduct(id: number): Observable<void> {
+  deleteProduct(id: string): Observable<void> {
     return this.http.delete<void>(`/api/${id}`);
   }
 }
