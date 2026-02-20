@@ -1,1 +1,34 @@
-<p>products-list works!</p>
+<p-toast></p-toast>
+
+<div class="card">
+    <p-table
+        [value]="products"
+        [paginator]="true"
+        [rows]="5"
+    >
+        <ng-template #header>
+            <tr>
+                <th style="width:20%">Id</th>
+                <th style="width:20%">Product</th>
+                <th style="width:20%">View</th>
+                <th style="width:20%">Update</th>
+                <th style="width:20%">Delete</th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-product>
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>
+                    <p-button icon="pi pi-eye" (click)="viewProduct(product)" severity="secondary" rounded />
+                </td>
+                <td>
+                    <p-button icon="pi pi-refresh" (click)="updateProduct(product)" severity="secondary" rounded />
+                </td>
+                <td>
+                    <p-button icon="pi pi-trash" (click)="deleteProduct(product)" severity="danger" rounded />
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

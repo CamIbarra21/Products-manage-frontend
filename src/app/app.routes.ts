@@ -11,7 +11,7 @@ export const routes: Routes = [
         component: MainLayout,
         children: [
         { path: 'home', component: Home },
-        //{ path: 'productos', loadChildren: () => import('./pages/productos/productos.module').then(m => m.ProductosModule) }
+        { path: 'products', loadChildren: () => import('./pages/productos/productos-module').then(m => m.ProductosModule) }
         ]
     }
 

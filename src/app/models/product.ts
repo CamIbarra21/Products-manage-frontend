@@ -1,6 +1,6 @@
 export interface Producto {
   id: number;
-  nombre: string;
+  name: string;
   data?: any;
   createdAt?: string;
   updatedAt?: string;

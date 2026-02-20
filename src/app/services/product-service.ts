@@ -1,33 +1,35 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { Producto } from '../models/product';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  private apiUrl = 'https://api.restful-api.dev/objects';
+  private apiKey = '32f05446-ea03-484f-ad20-d4f342a4d5f6';
 
   constructor (private http: HttpClient) {}
   
-  getProducts(): Observable<Producto[]> {
-    return this.http.get<Producto[]>(this.apiUrl);
+  getProducts(): Observable<any[]> {
+    const headers = new HttpHeaders({
+      'x-api-key': this.apiKey
+    });
+    return this.http.get<any[]>(`/api`, { headers });
   }
 
-  getById(id: number): Observable<Producto> {
-    return this.http.get<Producto>(`${this.apiUrl}/${id}`);
+  getById(id: number): Observable<any> {
+    return this.http.get<any>(`/api/${id}`);
   }
 
-  addProduct(product: any): Observable<Producto> {
-    return this.http.post<Producto>(this.apiUrl, product);
+  addProduct(product: any): Observable<any> {
+    return this.http.post<any>('/api', product);
   }
 
-  updateProduct(id: number, product: any): Observable<Producto> {
-    return this.http.put<Producto>(`${this.apiUrl}/${id}`, product);
+  updateProduct(id: number, product: any): Observable<any> {
+    return this.http.put<any>(`/api/${id}`, product);
   }
 
   deleteProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`/api/${id}`);
   }
 }
