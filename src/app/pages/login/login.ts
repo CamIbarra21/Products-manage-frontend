@@ -36,7 +36,7 @@ export class Login implements OnInit {
 
       if (username == 'innova' && password == 'innova123') {
         this.toastMessage.showSuccess(`Welcome ${username}`);
-        //this.router.navigate(['home']);
+        this.router.navigate(['inside/home']);
       } else {
         this.toastMessage.showError('Username or password is incorrect');
       }

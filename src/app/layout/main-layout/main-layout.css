@@ -1,0 +1,20 @@
+.layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: var(--surface-card);
+  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.main-content {
+  margin-left: 220px;
+  padding: 2rem;
+  width: calc(100% - 220px);
+}
