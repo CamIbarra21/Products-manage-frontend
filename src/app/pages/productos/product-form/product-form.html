@@ -1,7 +1,7 @@
 <p-toast></p-toast>
 
 <div class="form-section">
-    <h2>{{ isUpdate ? 'Editar Producto' : 'Nuevo Producto' }}</h2>
+    <h2>{{ isUpdate ? 'Update product' : 'New product' }}</h2>
 
     <form [formGroup]="productForm" (ngSubmit)="save()">
         <p-inputgroup>
@@ -17,7 +17,7 @@
             <p-slider [(ngModel)]="value" [min]="0" [max]="10" class="w-full" (onChange)="setFieldCount(value)"/>
         </div>-->
 
-
+        <span>Characteristics</span>
         <p-inputgroup>
             <input id="data1" formControlName="data1" pInputText placeholder="Data 1" />
             <input id="data2" formControlName="data2" pInputText placeholder="Data 2" />

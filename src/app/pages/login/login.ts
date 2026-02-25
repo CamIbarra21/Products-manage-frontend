@@ -9,6 +9,7 @@ import { ToastModule } from 'primeng/toast';
 import { Router } from '@angular/router';
 import { ToastService } from '../../services/toast-service';
 import { CardModule } from 'primeng/card';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class Login implements OnInit {
 
   loginForm!: FormGroup;
 
-  constructor (private fb: FormBuilder, private toastMessage: ToastService, private router: Router) {}
+  constructor (private authService: AuthService, private fb: FormBuilder, private toastMessage: ToastService, private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -34,12 +35,26 @@ export class Login implements OnInit {
       const username = this.loginForm.value.username;
       const password = this.loginForm.value.password;
 
-      if (username == 'innova' && password == 'innova123') {
-        this.toastMessage.showSuccess(`Welcome ${username}`);
-        this.router.navigate(['inside/home']);
-      } else {
-        this.toastMessage.showError('Username or password is incorrect');
-      }
+      console.log(this.loginForm.value)
+      this.authService.login(this.loginForm.value).subscribe({
+        next: (res) => {
+          console.log(res);
+          if (res.success) {
+            this.toastMessage.showSuccess(res.message);
+            localStorage.setItem('actualUser', JSON.stringify(res.data));
+            setTimeout(() => {
+              this.router.navigate(['inside/home']);
+            }, 2000);
+            //this.router.navigate(['inside/home']);
+          } else {
+            this.toastMessage.showError(res.message);
+          }
+        },
+        error: (err) => {
+          console.log(err);
+        this.toastMessage.showError('Login failed: ' + err.error.message);
+        }
+      });
     } else {
       this.toastMessage.showWarn('Fill the required fields')
     }

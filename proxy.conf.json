@@ -1,11 +1,11 @@
 {
   "/api": {
-    "target": "https://api.restful-api.dev/collections/cami05aic@gmail.com/objects",
-    "secure": true,
+    "target": "https://localhost:7039",
+    "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
     "pathRewrite": {
-      "^/api": ""
+      "^/api": "/api"
     }
   }
 }

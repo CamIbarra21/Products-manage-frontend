@@ -12,7 +12,7 @@
 
 }
 
-.form-section > h2 {
+.form-section > h2, form > span {
     color: black;
 }
 

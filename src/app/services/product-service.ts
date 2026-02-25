@@ -6,40 +6,33 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductService {
-  private apiKey = '32f05446-ea03-484f-ad20-d4f342a4d5f6';
+  private baseUrl = "/api/ProductsControllerEF";
 
-  constructor (private http: HttpClient) {}
-  
+  constructor(private http: HttpClient) {}
+
   getProducts(): Observable<any[]> {
-    const headers = new HttpHeaders({
-      'x-api-key': this.apiKey
-    });
-    return this.http.get<any[]>(`/api`, { headers });
+    //https://localhost:7039/api/ProductsControllerEF
+    return this.http.get<any[]>(`${this.baseUrl}`);
   }
 
-  getById(id: string): Observable<any> {
-    const headers = new HttpHeaders({
-      'x-api-key': this.apiKey
-    });
-
-    return this.http.get<any>(`/api/${id}`, { headers });
+  getById(id: number): Observable<any> {
+    //https://localhost:7039/api/ProductsControllerEF/1
+    return this.http.get<any>(`${this.baseUrl}/${id}`);
   }
 
   addProduct(product: any): Observable<any> {
-    const headers = new HttpHeaders({
-      'x-api-key': this.apiKey
-    });
-    return this.http.post<any>('/api', product, { headers });
+    //https://localhost:7039/api/ProductsControllerEF
+    return this.http.post<any>(`${this.baseUrl}`, product);
   }
 
-  updateProduct(id: string, product: any): Observable<any> {
-    return this.http.put<any>(`/api/${id}`, product);
+  updateProduct(id: number, product: any): Observable<any> {
+    //https://localhost:7039/api/ProductsControllerEF/1
+    return this.http.put<any>(`${this.baseUrl}/${id}`, product);
   }
 
-  deleteProduct(id: string): Observable<void> {
-    const headers = new HttpHeaders({
-      'x-api-key': this.apiKey
-    });
-    return this.http.delete<void>(`/api/${id}`, { headers });
+  deleteProduct(id: number): Observable<void> {
+    //https://localhost:7039/api/ProductsControllerEF/1
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+
 }

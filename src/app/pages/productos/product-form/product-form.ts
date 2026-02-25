@@ -38,7 +38,7 @@ export class ProductForm implements OnInit {
 
     if (id) {
       this.isUpdate = true;
-      this.pService.getById(id).subscribe({
+      this.pService.getById(Number(id)).subscribe({
         next: (data) => this.product = data,
         error: () => this.toastMessage.showError("No se pudo cargar el producto")
       });
