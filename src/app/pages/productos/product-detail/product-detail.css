@@ -1,0 +1,17 @@
+.detail-container {
+    height: 90vh;
+}
+
+.header-card {
+  height: 250px;          /* altura fija */
+  width: 100%;
+  overflow: hidden;       /* oculta lo que se salga */
+}
+
+.header-card > img {
+  width: 100%;            /* ocupa todo el ancho */
+  height: 100%;           /* ocupa todo el alto del contenedor */
+  object-fit: cover;      /* recorta sin deformar */
+  object-position: center;/* centra el recorte */
+  display: block; 
+}

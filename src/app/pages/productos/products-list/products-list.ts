@@ -28,7 +28,7 @@ export class ProductsList implements OnInit {
   }
 
   viewProduct(producto: any) {
-
+    this.router.navigate(['/inside/products/view', producto.id])
   }
 
   updateProduct(producto: any) {
