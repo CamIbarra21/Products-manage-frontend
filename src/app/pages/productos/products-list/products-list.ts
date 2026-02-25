@@ -20,19 +20,7 @@ export class ProductsList implements OnInit {
   constructor (private pService: ProductService, private toastMessage: ToastService, private router: Router) {}
 
   ngOnInit(): void {
-    this.pService.getProducts().subscribe({
-      next: (res) => {
-        if (res.success) {
-          this.products = res.data; // aquí está la lista
-        } else {
-          this.toastMessage.showError(res.message);
-        }
-      },
-      error: (err) => {
-        this.toastMessage.showError('Error loading products: ' + err.error.message);
-      }
-    });
-
+    this.loadProducts();
   }
 
   viewProduct(producto: any) {
@@ -40,17 +28,39 @@ export class ProductsList implements OnInit {
   }
 
   updateProduct(producto: any) {
-
+    this.router.navigate(['/inside/products/update', producto.id]);
   }
 
   deleteProduct (producto: any) {
     console.log(producto)
     this.pService.deleteProduct(producto.id).subscribe({
-        next: () => {
-          this.toastMessage.showSuccess("Producto eliminado");
-          this.router.navigate(['/inside/products']);
+        next: (res) => {
+          if (res.success) {
+            this.toastMessage.showSuccess(res.message || "Producto eliminado");
+            this.loadProducts(); 
+          } else {
+            this.toastMessage.showError(res.message || "No se pudo eliminar el producto");
+          }
         },
-        error: () => this.toastMessage.showError("No se pudo eliminar el producto")
+        error: (err) => {
+          this.toastMessage.showError("Error al eliminar: " + err.message);
+        }
       });
   }
+
+  loadProducts() {
+    this.pService.getProducts().subscribe({
+      next: (res) => {
+        if (res.success) {
+          this.products = res.data;
+        } else {
+          this.toastMessage.showError(res.message);
+        }
+      },
+      error: (err) => {
+        this.toastMessage.showError('Error loading products: ' + err.message);
+      }
+    });
+  }
+
 }

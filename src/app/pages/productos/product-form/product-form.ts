@@ -27,7 +27,6 @@ export class ProductForm implements OnInit {
   isUpdate: boolean = false;
   categories: any[] | undefined;
   //value:number = 5;
-  @Input() initialData: any;
 
   constructor (private catService: CategoryService, private fb: FormBuilder, private router: Router, private pService: ProductService, private route: ActivatedRoute, private toastMessage: ToastService) {}
   ngOnInit(): void {
@@ -90,7 +89,7 @@ export class ProductForm implements OnInit {
       this.pService.updateProduct(this.product.id, formProduct).subscribe({
         next: () => {
           this.toastMessage.showSuccess("Producto actualizado");
-          this.router.navigate(['/inside/productos']);
+          this.router.navigate(['/inside/products']);
         },
         error: () => this.toastMessage.showError("No se pudo actualizar el producto")
       });
