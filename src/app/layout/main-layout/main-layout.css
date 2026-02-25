@@ -17,4 +17,6 @@
   margin-left: 220px;
   padding: 2rem;
   width: calc(100% - 220px);
+  background-color: rgb(53, 53, 53);
+  border-radius: 10px;
 }

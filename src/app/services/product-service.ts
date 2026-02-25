@@ -43,4 +43,14 @@ export class ProductService {
     return this.http.delete<APIResponse<any>>(`${this.baseUrl}/${id}`);
   }
 
+  paginateProducts(pageNumber: number, pageSize: number): Observable<APIResponse<any>> {
+    //https://localhost:7039/api/ProductsControllerEF/paged?pageNumber=2&pageSize=5
+    return this.http.get<APIResponse<any>>(`${this.baseUrl}/paged?pageNumber=${pageNumber}&pageSize=${pageSize}`)
+  }
+
+  getProductsCount(): Observable<APIResponse<any>> {
+    //https://localhost:7039/api/ProductsControllerEF/count
+    return this.http.get<APIResponse<any>>(`${this.baseUrl}/count`);
+  }
+
 }
