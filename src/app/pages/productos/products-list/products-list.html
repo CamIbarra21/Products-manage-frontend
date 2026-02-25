@@ -17,17 +17,29 @@
     >
         <ng-template #header>
             <tr>
-                <th style="width:20%">Id</th>
-                <th style="width:20%">Product</th>
-                <th style="width:20%">View</th>
-                <th style="width:20%">Update</th>
-                <th style="width:20%">Delete</th>
+                <th style="width:5%">Id</th>
+                <th style="width:18.5%">Product</th>
+                <th style="width:18.5%">Image</th>
+                <th style="width:18.5%">Price</th>
+                <th style="width:18.5%">Category</th>
+                <th style="width:7%">View</th>
+                <th style="width:7%">Update</th>
+                <th style="width:7%">Delete</th>
             </tr>
         </ng-template>
         <ng-template #body let-product>
             <tr>
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
+                <td>
+                    <img
+                        [src]="product.imageLink"
+                        [alt]="product.name"
+                        class="w-24 rounded"
+                    />
+                </td>
+                <td>{{ product.price | currency: 'PEN' }}</td>
+                <td>{{ product.category }}</td>
                 <td>
                     <p-button icon="pi pi-eye" (click)="viewProduct(product)" severity="secondary" rounded />
                 </td>

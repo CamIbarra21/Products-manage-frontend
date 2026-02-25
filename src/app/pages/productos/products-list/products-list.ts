@@ -6,10 +6,11 @@ import { RippleModule } from 'primeng/ripple';
 import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
 import { Router, RouterLink } from '@angular/router';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-products-list',
-  imports: [ButtonModule, RippleModule, ToastModule, TableModule, RouterLink],
+  imports: [ButtonModule, RippleModule, ToastModule, TableModule, RouterLink, CurrencyPipe],
   templateUrl: './products-list.html',
   styleUrl: './products-list.css',
 })
@@ -20,15 +21,17 @@ export class ProductsList implements OnInit {
 
   ngOnInit(): void {
     this.pService.getProducts().subscribe({
-    next: (data) => {
-      console.log('Productos cargados:', data);
-      this.products = data;
-    },
-    error: (err ) => {
-      console.error('Error cargando productos:', err);
-      this.toastMessage.showError("No se pudo cargar los productos")
-    }
-  });
+      next: (res) => {
+        if (res.success) {
+          this.products = res.data; // aquí está la lista
+        } else {
+          this.toastMessage.showError(res.message);
+        }
+      },
+      error: (err) => {
+        this.toastMessage.showError('Error loading products: ' + err.error.message);
+      }
+    });
 
   }
 
