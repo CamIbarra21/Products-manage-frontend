@@ -11,22 +11,46 @@
             <input id="name" formControlName="name" pInputText placeholder="Product name" />
         </p-inputgroup>
 
+        <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <input id="description" formControlName="description" pInputText placeholder="Description" />
+        </p-inputgroup>
+
+        <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <p-inputnumber id="price" 
+            formControlName="price" 
+            [showButtons]="true" 
+            mode="currency" 
+            currency="PEN" 
+            locale="en-US"
+            [minFractionDigits]="2"
+            placeholder="Price" />
+        </p-inputgroup>
+
+        <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <p-select formControlName="category" [options]="categories" placeholder="Category" class="w-full md:w-56" />
+        </p-inputgroup>
+
+        <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <input id="imageLink" formControlName="imageLink" pInputText placeholder="Image link" />
+        </p-inputgroup>
+
         <!--
         <div>
             <input type="text" pInputText [(ngModel)]="value"/>
             <p-slider [(ngModel)]="value" [min]="0" [max]="10" class="w-full" (onChange)="setFieldCount(value)"/>
         </div>-->
-
-        <span>Characteristics</span>
-        <p-inputgroup>
-            <input id="data1" formControlName="data1" pInputText placeholder="Data 1" />
-            <input id="data2" formControlName="data2" pInputText placeholder="Data 2" />
-            <input id="data3" formControlName="data3" pInputText placeholder="Data 3" />
-            <input id="data4" formControlName="data4" pInputText placeholder="Data 4" />
-            <input id="data5" formControlName="data5" pInputText placeholder="Data 5" />
-        </p-inputgroup>
-
-
 
 
         <button pButton type="submit">
@@ -34,7 +58,7 @@
             <span pButtonLabel><b>Save</b></span>
         </button>
 
-        <button routerLink="inside/products" pButton>
+        <button routerLink="/inside/products" pButton>
             <i class="pi pi-times" pButtonIcon></i>
             <span pButtonLabel><b>Cancel</b></span>
         </button>
