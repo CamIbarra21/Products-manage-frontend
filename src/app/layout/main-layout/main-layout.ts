@@ -3,10 +3,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { Menu } from 'primeng/menu';
 import { AuthService } from '../../services/auth-service';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-main-layout',
-  imports: [ Menu, RouterOutlet ],
+  imports: [ Menu, RouterOutlet, ToastModule ],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.css',
 })
