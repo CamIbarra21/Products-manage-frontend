@@ -35,13 +35,14 @@ export class Login implements OnInit {
       const username = this.loginForm.value.username;
       const password = this.loginForm.value.password;
 
-      console.log(this.loginForm.value)
       this.authService.login(this.loginForm.value).subscribe({
         next: (res) => {
           console.log(res);
           if (res.success) {
             this.toastMessage.showSuccess(res.message);
-            localStorage.setItem('actualUser', JSON.stringify(res.data));
+            localStorage.setItem('actualUser', JSON.stringify(res.data.item));
+            console.log('Token: ', res.data.token)
+            this.authService.storeToken(res.data.token);
             setTimeout(() => {
               this.router.navigate(['inside/home']);
             }, 2000);
