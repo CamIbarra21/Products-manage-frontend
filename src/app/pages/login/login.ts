@@ -41,8 +41,8 @@ export class Login implements OnInit {
           if (res.success) {
             this.toastMessage.showSuccess(res.message);
             localStorage.setItem('actualUser', JSON.stringify(res.data.item));
-            console.log('Token: ', res.data.token)
-            this.authService.storeToken(res.data.token);
+            console.log('Token: ', res.data.token.accesToken)
+            this.authService.storeToken(res.data.token.accesToken);
             setTimeout(() => {
               this.router.navigate(['inside/home']);
             }, 2000);
@@ -53,7 +53,7 @@ export class Login implements OnInit {
         },
         error: (err) => {
           console.log(err);
-        this.toastMessage.showError('Login failed: ' + err.error.message);
+          this.toastMessage.showError('Login failed: ' + err.error.message);
         }
       });
     } else {

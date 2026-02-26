@@ -25,8 +25,8 @@ export class CategoryService {
     return this.http.get<APIResponse<any>>(`${this.baseUrl}/${id}`);
   }
 
-  addCategory(product: any): Observable<APIResponse<any>> {
-    return this.http.post<APIResponse<any>>(`${this.baseUrl}`, product);
+  addCategory(name: string): Observable<APIResponse<any>> {
+    return this.http.post<APIResponse<any>>(`${this.baseUrl}`, { name });
   }
 
   updateCategory(id: number, product: any): Observable<APIResponse<any>> {

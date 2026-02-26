@@ -37,8 +37,9 @@ export class MainLayout implements OnInit {
         label: 'Others',
         items: [
           {
-            label: 'Add product',
-            icon: 'pi pi-plus'
+            label: 'Categories',
+            icon: 'pi pi-folder-plus',
+            routerLink: '/inside/categories'
           },
           {
             label: 'Account',

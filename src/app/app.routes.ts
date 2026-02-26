@@ -13,7 +13,8 @@ export const routes: Routes = [
         canActivate: [authGuard],
         children: [
         { path: 'home', component: Home },
-        { path: 'products', loadChildren: () => import('./pages/productos/productos-module').then(m => m.ProductosModule) }
+        { path: 'products', loadChildren: () => import('./pages/productos/productos-module').then(m => m.ProductosModule) },
+        { path: 'categories', loadChildren: () => import('./pages/categories/categories-module').then(m => m.CategoriesModule) }
         ]
     }
 
