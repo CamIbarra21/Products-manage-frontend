@@ -12,7 +12,7 @@ export interface APIResponse<T> {
   providedIn: 'root',
 })
 export class CategoryService {
-  private baseUrl = "/api/Categories";
+  private baseUrl = "/api/business/Categories";
   //private baseUrl:string = "https://localhost:7039/api/Users";
 
   constructor(private http: HttpClient) {}

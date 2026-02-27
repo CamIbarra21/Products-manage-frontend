@@ -7,10 +7,11 @@ import { InputGroup } from 'primeng/inputgroup';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-categories-list',
-  imports: [ TableModule, CommonModule, InputGroup, InputTextModule, ButtonModule, FormsModule ],
+  imports: [ TableModule, CommonModule, InputGroup, InputTextModule, ButtonModule, FormsModule, ToastModule ],
   templateUrl: './categories-list.html',
   styleUrl: './categories-list.css',
 })
@@ -49,6 +50,7 @@ export class CategoriesList implements OnInit {
         this.loadCategories(); // refresca la lista
       },
       error: (err) => {
+        console.log(err);
         console.error(err.error.message)
         this.toastMessage.showError(err.error.message);
       }
