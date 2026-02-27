@@ -16,7 +16,8 @@ export const routes: Routes = [
         children: [
         { path: 'home', component: Home },
         { path: 'products', loadChildren: () => import('./pages/productos/productos-module').then(m => m.ProductosModule) },
-        { path: 'categories', loadChildren: () => import('./pages/categories/categories-module').then(m => m.CategoriesModule) }
+        { path: 'categories', loadChildren: () => import('./pages/categories/categories-module').then(m => m.CategoriesModule) },
+        { path: 'stores', loadChildren: () => import('./pages/stores/stores-module').then(m => m.StoresModule) }
         ]
     }
 

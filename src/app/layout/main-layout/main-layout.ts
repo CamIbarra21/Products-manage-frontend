@@ -38,8 +38,13 @@ export class MainLayout implements OnInit {
         items: [
           {
             label: 'Categories',
-            icon: 'pi pi-folder-plus',
+            icon: 'pi pi-bullseye',
             routerLink: '/inside/categories'
+          },
+          {
+            label: 'Stores',
+            icon: 'pi pi-shop',
+            routerLink: '/inside/stores'
           },
           {
             label: 'Account',
