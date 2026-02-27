@@ -13,7 +13,7 @@ export interface APIResponse<T> {
 })
 
 export class ProductService {
-  private baseUrl = "/api/ProductsControllerEF";
+  private baseUrl = "/api/business/Products";
   //private baseUrl:string = "https://localhost:7039/api/Users";
 
   constructor(private http: HttpClient) {}
