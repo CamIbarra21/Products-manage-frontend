@@ -27,14 +27,22 @@ export class UserForm implements OnInit {
       "fullname": ['', Validators.required],
       "email": ['', Validators.required],
       "username": ['', Validators.required],
-      "password": ['', Validators.required, Validators.minLength(8)]
+      "password": ['', Validators.required]
     })
   }
 
   register() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value)
-      this.authService.login(this.registerForm.value).subscribe({
+      var newUser: any = {
+        fullname: this.registerForm.value.fullname,
+        email: this.registerForm.value.email,
+        username: this.registerForm.value.username,
+        password: this.registerForm.value.password,
+        profileImage: "https://thumbs.dreamstime.com/b/default-profile-picture-avatar-photo-placeholder-vector-illustration-default-profile-picture-avatar-photo-placeholder-vector-189495158.jpg",
+        roleName: "User"
+      }
+      console.log("Nuevo usuario: ", newUser);
+      this.authService.register(newUser).subscribe({
         next: (res) => {
           console.log(res);
           if (res.success) {

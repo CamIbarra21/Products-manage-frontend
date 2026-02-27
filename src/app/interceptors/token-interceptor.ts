@@ -21,6 +21,8 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {
           toastMessage.showError("Error with Token");
+        } else if (err.status === 403){
+          toastMessage.showWarn("Your role does not have the required access level")
         }
       }
       return throwError(() => new Error("Some other error occur"));
