@@ -41,8 +41,12 @@ export class Login implements OnInit {
           if (res.success) {
             this.toastMessage.showSuccess(res.message);
             localStorage.setItem('actualUser', JSON.stringify(res.data.item));
-            console.log('Token: ', res.data.token.accesToken)
             this.authService.storeToken(res.data.token.accesToken);
+            this.authService.storeRefreshToken(res.data.token.refreshToken);
+            const tokenPayload = this.authService.decodedToken();
+            console.log(tokenPayload);
+
+
             setTimeout(() => {
               this.router.navigate(['inside/home']);
             }, 2000);
