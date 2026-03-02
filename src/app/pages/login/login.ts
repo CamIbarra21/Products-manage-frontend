@@ -52,8 +52,7 @@ export class Login implements OnInit {
           }
         },
         error: (err) => {
-          console.log(err);
-          this.toastMessage.showError('Login failed: ' + err.error.message);
+          this.toastMessage.showError('Login failed: ' + err);
         }
       });
     } else {

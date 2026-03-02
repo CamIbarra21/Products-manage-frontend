@@ -1,0 +1,67 @@
+<p-toast></p-toast>
+
+<div class="form-section">
+    <h2>{{ isUpdate ? 'Update store' : 'New store' }}</h2>
+
+    <form [formGroup]="storeForm" (ngSubmit)="save()">
+        <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <input id="name" formControlName="name" pInputText placeholder="Name" />
+        </p-inputgroup>
+
+        <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <input id="location" formControlName="location" pInputText placeholder="Location" />
+        </p-inputgroup>
+
+        <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <input id="manager" formControlName="manager" pInputText placeholder="Manager" />
+        </p-inputgroup>
+
+        <p-inputgroup>
+            <form [formGroup]="daysForm">
+                <div class="flex flex-wrap gap-4">
+                    @for (item of daysKeys; track item) {
+                        <div class="flex items-center gap-2">
+                            <p-checkbox [formControlName]="item" [binary]="true" [inputId]="item" [invalid]="isInvalid(item)" />
+                            <label [for]="item"> {{ item }} </label>
+                        </div>
+                    }
+                </div>
+                @if (hasAnyInvalid()) {
+                    <p-message severity="error" size="small" variant="simple"> At least one day must be selected. </p-message>
+                }
+            </form>
+        </p-inputgroup>
+
+        <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="pi pi-clock"></i>
+            </p-inputgroup-addon>
+            <input pInputText id="openTime" formControlName="openTime" placeholder="Open hour" />
+        </p-inputgroup>
+
+        <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="pi pi-clock"></i>
+            </p-inputgroup-addon>
+            <input pInputText id="closeTime" formControlName="closeTime" placeholder="Close hour" />
+        </p-inputgroup>
+
+        <button pButton>
+            <i class="pi pi-arrow-up-right" pButtonIcon></i>
+            <span pButtonLabel><b>Save</b></span>
+        </button>
+        <button routerLink="/inside/stores" pButton>
+            <i class="pi pi-times" pButtonIcon></i>
+            <span pButtonLabel><b>Cancel</b></span>
+        </button>
+    </form>
+</div>

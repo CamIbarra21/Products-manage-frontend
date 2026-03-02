@@ -51,7 +51,6 @@ export class CategoriesList implements OnInit {
       },
       error: (err) => {
         console.log(err);
-        console.error(err.error.message)
         this.toastMessage.showError(err.error.message);
       }
     });

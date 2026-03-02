@@ -25,7 +25,12 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
           toastMessage.showWarn("Your role does not have the required access level")
         }
       }
-      return throwError(() => new Error("Some other error occur"));
+      console.log(err);
+      if (err.error != null)
+        return throwError(() => new Error(`${err.error.message}`));
+      else
+        console.log(err.message);
+        return throwError(() => new Error("Something else happened"));
     })
   );
 };

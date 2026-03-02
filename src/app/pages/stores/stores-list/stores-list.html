@@ -1,6 +1,6 @@
 <p-toast></p-toast>
 
-<!---
+
 <div class="mb-3">
     <p-button 
     label="New Store" 
@@ -9,15 +9,18 @@
     severity="success">
     </p-button>
 </div>
--->
+
 <div class="card">
     <p-table [value]="stores">
         <ng-template #header>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Location</th>
-                <th>Manager</th>
+                <th style="width:5%">Id</th>
+                <th style="width:27%">Name</th>
+                <th style="width:27%">Location</th>
+                <th style="width:27%">Manager</th>
+                <th style="width:8%">View</th>
+                <th style="width:8%">Update</th>
+                <th style="width:8%">Delete</th>
             </tr>
         </ng-template>
         <ng-template #body let-store>
@@ -26,6 +29,15 @@
                 <td>{{ store.name }}</td>
                 <td>{{ store.location }}</td>
                 <td>{{ store.manager }}</td>
+                <td>
+                    <p-button icon="pi pi-eye" (click)="viewStore(store)" severity="secondary" rounded />
+                </td>
+                <td>
+                    <p-button icon="pi pi-refresh" (click)="updateStore(store)" severity="secondary" rounded />
+                </td>
+                <td>
+                    <p-button icon="pi pi-trash" (click)="deleteStore(store)" severity="danger" rounded />
+                </td>
             </tr>
         </ng-template>
     </p-table>
