@@ -6,14 +6,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ToastService } from '../../services/toast-service';
 import { CardModule } from 'primeng/card';
 import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-login',
-  imports: [  ToastModule, ButtonModule, PasswordModule, InputGroupModule, InputGroupAddonModule, InputTextModule, ReactiveFormsModule ],
+  imports: [  ToastModule, ButtonModule, PasswordModule, InputGroupModule, InputGroupAddonModule, InputTextModule, ReactiveFormsModule, RouterLink ],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })

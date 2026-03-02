@@ -8,11 +8,11 @@ import { PasswordModule } from 'primeng/password';
 import { ToastModule } from 'primeng/toast';
 import { AuthService } from '../../services/auth-service';
 import { ToastService } from '../../services/toast-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user-form',
-  imports: [ ToastModule, ButtonModule, PasswordModule, InputGroupModule, InputGroupAddonModule, InputTextModule, ReactiveFormsModule ],
+  imports: [ ToastModule, ButtonModule, PasswordModule, InputGroupModule, InputGroupAddonModule, InputTextModule, ReactiveFormsModule, RouterLink ],
   templateUrl: './user-form.html',
   styleUrl: './user-form.css',
 })
