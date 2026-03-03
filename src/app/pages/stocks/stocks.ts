@@ -13,10 +13,13 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { PickListModule } from 'primeng/picklist';
 import { InputNumber } from 'primeng/inputnumber';
 import { StockService } from '../../services/stock-service';
+import { Conditional } from '@angular/compiler';
+import { SelectModule } from 'primeng/select';
+import { Message } from 'primeng/message';
 
 @Component({
   selector: 'app-stocks',
-  imports: [ PickListModule, CommonModule, TabsModule, ToastModule, ButtonModule, InputGroupModule, InputGroupAddonModule, InputTextModule, ReactiveFormsModule, FormsModule, InputNumber],
+  imports: [ Message, SelectModule, PickListModule, CommonModule, TabsModule, ToastModule, ButtonModule, InputGroupModule, InputGroupAddonModule, InputTextModule, ReactiveFormsModule, FormsModule, InputNumber],
   templateUrl: './stocks.html',
   styleUrl: './stocks.css',
 })
@@ -31,14 +34,25 @@ export class Stocks implements OnInit {
   targetProducts!: any[];
 
   addForm!: FormGroup;
+  searchForm!: FormGroup;
+
+  searchSuccess!: boolean;
+  searchResult!: number;
 
   constructor(private fb: FormBuilder, private storeService: StoreService, private productService: ProductService, private toastMessage: ToastService, private stockService: StockService) {}
 
   ngOnInit() {
     this.loadStoresProducts();
 
+    this.searchSuccess = false;
+
     this.addForm = this.fb.group({
       quantity: [1, Validators.required]
+    })
+
+    this.searchForm = this.fb.group({
+      selectedSearchStore: ['', Validators.required],
+      selectedSearchProduct: ['', Validators.required]
     })
   }
 
@@ -76,6 +90,30 @@ export class Stocks implements OnInit {
       }
     } else {
       this.toastMessage.showWarn('Please fill the required fields');
+    }
+  }
+
+  searchStock() {
+    this.searchSuccess = false;
+    if (this.searchForm.valid) {
+      const product = this.searchForm.value.selectedSearchProduct;
+      const store = this.searchForm.value.selectedSearchStore;
+      this.stockService.getByProductAndStore(product.id, store.id).subscribe({
+        next: (res) => {
+          if (res.success) {
+            this.toastMessage.showSuccess('Stock searched successfully');
+            this.searchResult = res.data.quantity;
+            this.searchSuccess = true;
+          } else {
+            this.toastMessage.showError(res.message);
+          }
+        },
+        error: (err) => {
+          this.searchSuccess = false;
+          this.toastMessage.showError('Error searching stock: ' + err);
+        }
+      })
+
     }
   }
 

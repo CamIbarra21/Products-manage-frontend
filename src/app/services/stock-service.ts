@@ -26,4 +26,8 @@ export class StockService {
   deleteStock(id: number): Observable<APIResponse<any>> {
     return this.http.delete<APIResponse<any>>(`${this.baseUrl}/${id}`);
   }
+
+  getByProductAndStore(productId: number, storeId: number): Observable<APIResponse<any>> {
+    return this.http.get<APIResponse<any>>(`${this.baseUrl}/product${productId}/store${storeId}`);
+  }
 }

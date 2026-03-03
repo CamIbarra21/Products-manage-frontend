@@ -9,9 +9,40 @@
         </p-tablist>
         <p-tabpanels>
             <p-tabpanel value="0">
-                <p class="m-0">
-                    Looking for stock
-                </p>
+                    <form [formGroup]="searchForm" (ngSubmit)="searchStock()">
+                        <p-inputgroup>
+                            <p-inputgroup-addon>
+                                <i class="pi pi-cart-arrow-down"></i>
+                            </p-inputgroup-addon>
+                            <p-select [options]="sourceStores" formControlName="selectedSearchStore" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Store" class="search-select-store">
+                                <ng-template let-store #store>
+                                    <span>{{ store.name }}</span>
+                                </ng-template>
+                            </p-select>
+
+                        </p-inputgroup>
+
+                        <p-inputgroup>
+                            <p-inputgroup-addon>
+                                <i class="pi pi-cart-arrow-down"></i>
+                            </p-inputgroup-addon>
+                            <p-select [options]="sourceProducts" formControlName="selectedSearchProduct" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Store" class="search-select-store">
+                                <ng-template let-product #product>
+                                    <span>{{ product.name }}</span>
+                                </ng-template>
+                            </p-select>
+                        </p-inputgroup>
+
+                        <button pButton>
+                            <i class="pi pi-arrow-up-right" pButtonIcon></i>
+                            <span pButtonLabel><b>Search stock</b></span>
+                        </button>
+                    </form>
+                    @if (searchSuccess) {
+                        <div class="search-result">
+                            <p-message severity="info">Stock for this product in this store is {{ searchResult }}</p-message>
+                        </div>
+                    }                    
             </p-tabpanel>
 
             <p-tabpanel value="1">
