@@ -80,7 +80,7 @@ export class ProductsList implements OnInit {
   }
 
   statusStock(product: any):string {
-    if (product.HasStock)
+    if (product.hasStock)
       return 'IN STOCK';
     else
       return 'OUT OF STOCK';

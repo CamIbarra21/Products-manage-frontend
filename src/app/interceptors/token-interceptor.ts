@@ -26,8 +26,13 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
         }
       }
       console.log(err);
-      if (err.error != null)
-        return throwError(() => new Error(`${err.error.message}`));
+      if (err.error != null) {
+        //console.log(err);
+        if (err.error.errors) 
+          return throwError(() => new Error(`${err.error.title}`));
+        else
+          return throwError(() => new Error(`${err.error.message}`));
+      }
       else
         console.log(err.message);
         return throwError(() => new Error("Something else happened"));
