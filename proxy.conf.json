@@ -1,20 +1,14 @@
 {
   "/api/auth/**": {
-    "target": "https://localhost:5001",
+    "target": "http://localhost:8080",
     "secure": false,
     "changeOrigin": true,
-    "logLevel": "debug",
-    "pathRewrite": {
-      "^/api/auth": "/api"
-    }
+    "logLevel": "debug"
   },
   "/api/business/**": {
-    "target": "https://localhost:6001",
+    "target": "http://localhost:8080",
     "secure": false,
     "changeOrigin": true,
-    "logLevel": "debug",
-    "pathRewrite": {
-      "^/api/business": "/api"
-    }
+    "logLevel": "debug"
   }
 }

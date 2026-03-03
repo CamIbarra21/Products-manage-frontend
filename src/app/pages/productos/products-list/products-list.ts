@@ -6,12 +6,15 @@ import { RippleModule } from 'primeng/ripple';
 import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
 import { Router, RouterLink } from '@angular/router';
-import { CurrencyPipe } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { Tag } from 'primeng/tag';
+import { DataView } from 'primeng/dataview';
+import { DividerModule } from 'primeng/divider';
 
 @Component({
   selector: 'app-products-list',
-  imports: [ButtonModule, RippleModule, ToastModule, TableModule, RouterLink, CurrencyPipe, PaginatorModule],
+  imports: [ButtonModule, RippleModule, ToastModule, TableModule, RouterLink, DividerModule, PaginatorModule, Tag, DataView, CommonModule],
   templateUrl: './products-list.html',
   styleUrl: './products-list.css',
 })
@@ -76,4 +79,26 @@ export class ProductsList implements OnInit {
     this.loadProducts(this.page, this.rows);
   }
 
+  statusStock(product: any):string {
+    if (product.hasStock)
+      return 'IN STOCK';
+    else
+      return 'OUT OF STOCK';
+  }
+
+  getSeverity(product: any) {
+    switch (this.statusStock(product)) {
+      case 'IN STOCK':
+          return { background: '#d4edda', color: '#155724' };
+
+      case 'LOW STOCK':
+          return { background: '#fff3cd', color: '#856404' };
+
+      case 'OUT OF STOCK':
+          return { background: '#f8d7da', color: '#721c24' };
+
+      default:
+          return null;
+    }
+  }
 }

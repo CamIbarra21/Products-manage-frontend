@@ -47,6 +47,11 @@ export class MainLayout implements OnInit {
             routerLink: '/inside/stores'
           },
           {
+            label: 'Stock',
+            icon: 'pi pi-shopping-cart',
+            routerLink: '/inside/stocks'
+          },
+          {
             label: 'Account',
             icon: 'pi pi-user'
           },

@@ -1,0 +1,76 @@
+<div class="stocks-section">
+    <p-toast></p-toast>
+
+    <p-tabs value="0">
+        <p-tablist>
+            <p-tab value="0">Find stock</p-tab>
+            <p-tab value="1">New stock</p-tab>
+            <p-tab value="2">Update stock</p-tab>
+        </p-tablist>
+        <p-tabpanels>
+            <p-tabpanel value="0">
+                <p class="m-0">
+                    Looking for stock
+                </p>
+            </p-tabpanel>
+
+            <p-tabpanel value="1">
+                <form [formGroup]="addForm" (ngSubmit)="addStock()">
+                    <p-inputgroup>
+                        <p-picklist
+                            [source]="sourceStores"
+                            [target]="targetStores"
+                            [dragdrop]="true"
+                            [responsive]="true"
+                            filterBy="name"
+                            sourceFilterPlaceholder="Search a store"
+                            targetFilterPlaceholder="Search a store"
+                            breakpoint="1400px"
+                            scrollHeight="20rem"
+                        >
+                            <ng-template let-store let-selected="selected" #store>
+                                {{ store.name }}
+                            </ng-template>
+                        </p-picklist>
+                    </p-inputgroup>
+
+                    <p-inputgroup>
+                        <p-picklist
+                            [source]="sourceProducts"
+                            [target]="targetProducts"
+                            [dragdrop]="true"
+                            [responsive]="true"
+                            filterBy="name"
+                            sourceFilterPlaceholder="Search a product"
+                            targetFilterPlaceholder="Search a product"
+                            breakpoint="1400px"
+                            scrollHeight="20rem"
+                        >
+                            <ng-template let-product let-selected="selected" #product>
+                                {{ product.name }}
+                            </ng-template>
+                        </p-picklist>
+                    </p-inputgroup>
+
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                            <i class="pi pi-cart-arrow-down"></i>
+                        </p-inputgroup-addon>
+                        <p-inputnumber formControlName="quantity"  [showButtons]="true" />
+                    </p-inputgroup>
+
+                    <button pButton>
+                        <i class="pi pi-arrow-up-right" pButtonIcon></i>
+                        <span pButtonLabel><b>Add stock</b></span>
+                    </button>
+                </form>
+            </p-tabpanel>
+
+            <p-tabpanel value="2">
+                <p>
+                    Updating stock
+                </p>
+            </p-tabpanel>
+        </p-tabpanels>
+    </p-tabs>
+</div>

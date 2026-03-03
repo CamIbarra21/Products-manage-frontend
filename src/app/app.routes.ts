@@ -4,6 +4,7 @@ import { Home } from './pages/home/home';
 import { MainLayout } from './layout/main-layout/main-layout';
 import { authGuard } from './guards/auth-guard';
 import { Register } from './pages/register/register';
+import { Stocks } from './pages/stocks/stocks';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,7 +18,8 @@ export const routes: Routes = [
         { path: 'home', component: Home },
         { path: 'products', loadChildren: () => import('./pages/productos/productos-module').then(m => m.ProductosModule) },
         { path: 'categories', loadChildren: () => import('./pages/categories/categories-module').then(m => m.CategoriesModule) },
-        { path: 'stores', loadChildren: () => import('./pages/stores/stores-module').then(m => m.StoresModule) }
+        { path: 'stores', loadChildren: () => import('./pages/stores/stores-module').then(m => m.StoresModule) },
+        { path: 'stocks', component: Stocks }
         ]
     }
 
