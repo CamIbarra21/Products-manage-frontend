@@ -87,7 +87,7 @@
                         <p-inputgroup-addon>
                             <i class="pi pi-cart-arrow-down"></i>
                         </p-inputgroup-addon>
-                        <p-inputnumber formControlName="quantity"  [showButtons]="true" />
+                        <p-inputnumber formControlName="quantity"  [showButtons]="true" [min]="1" />
                     </p-inputgroup>
 
                     <button pButton>
@@ -98,9 +98,42 @@
             </p-tabpanel>
 
             <p-tabpanel value="2">
-                <p>
-                    Updating stock
-                </p>
+                <form [formGroup]="updateForm" (ngSubmit)="updateStock()">
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                            <i class="pi pi-cart-arrow-down"></i>
+                        </p-inputgroup-addon>
+                        <p-select [options]="sourceStores" formControlName="selectedUpdateStore" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Store" class="search-select-store">
+                            <ng-template let-store #store>
+                                <span>{{ store.name }}</span>
+                            </ng-template>
+                        </p-select>
+
+                    </p-inputgroup>
+
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                            <i class="pi pi-cart-arrow-down"></i>
+                        </p-inputgroup-addon>
+                        <p-select [options]="sourceProducts" formControlName="selectedUpdateProduct" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Store" class="search-select-store">
+                            <ng-template let-product #product>
+                                <span>{{ product.name }}</span>
+                            </ng-template>
+                        </p-select>
+                    </p-inputgroup>
+
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                            <i class="pi pi-cart-arrow-down"></i>
+                        </p-inputgroup-addon>
+                        <p-inputnumber formControlName="quantityUpdate"  [showButtons]="true" [min]="1" />
+                    </p-inputgroup>
+
+                    <button pButton>
+                        <i class="pi pi-arrow-up-right" pButtonIcon></i>
+                        <span pButtonLabel><b>Update stock</b></span>
+                    </button>
+                </form>
             </p-tabpanel>
         </p-tabpanels>
     </p-tabs>

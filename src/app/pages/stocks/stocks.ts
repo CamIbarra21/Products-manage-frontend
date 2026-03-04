@@ -35,6 +35,7 @@ export class Stocks implements OnInit {
 
   addForm!: FormGroup;
   searchForm!: FormGroup;
+  updateForm!: FormGroup;
 
   searchSuccess!: boolean;
   searchResult!: number;
@@ -53,6 +54,12 @@ export class Stocks implements OnInit {
     this.searchForm = this.fb.group({
       selectedSearchStore: ['', Validators.required],
       selectedSearchProduct: ['', Validators.required]
+    })
+
+    this.updateForm = this.fb.group({
+      selectedUpdateStore: ['', Validators.required],
+      selectedUpdateProduct: ['', Validators.required],
+      quantityUpdate: [1, Validators.required]
     })
   }
 
@@ -113,7 +120,52 @@ export class Stocks implements OnInit {
           this.toastMessage.showError('Error searching stock: ' + err);
         }
       })
+    }  else {
+      this.toastMessage.showWarn('Please fill the required fields');
+    }
+  }
 
+  updateStock() {
+    if (this.updateForm.valid) {
+      const product = this.updateForm.value.selectedUpdateProduct;
+      const store = this.updateForm.value.selectedUpdateStore;
+
+      this.stockService.getByProductAndStore(product.id, store.id).subscribe({
+        next: (res) => {
+          if (res.success) {
+            const stockId = res.data.id;
+            
+            var stockUpdated = { 
+              id: Number(stockId),
+              storeId: store.id, 
+              storeName: "",
+              productId: product.id, 
+              productName: "",
+              quantity: this.updateForm.value.quantityUpdate 
+            };
+            
+            this.stockService.updateStock(Number(stockId), stockUpdated).subscribe({
+              next: (res) => {
+                if (res.success) {
+                  this.toastMessage.showSuccess('Stock updated successfully');
+                } else {
+                  this.toastMessage.showError(res.message);
+                }
+              },
+              error: (err) => {
+                this.toastMessage.showError('Error updating stock: ' + err);
+              }
+            });
+          } else {
+            this.toastMessage.showError(res.message);
+          }
+        },
+        error: (err) => {
+          this.toastMessage.showError('Error searching stock for update: ' + err);
+        }
+      });
+    } else {
+      this.toastMessage.showWarn('Please fill the required fields');
     }
   }
 
