@@ -1,22 +1,29 @@
 .layout {
   display: flex;
+  background-color: white;
+  width: inherit;
+  height: 100%;
+  top: 0;
 }
 
 .sidebar {
-  width: 220px;
-  height: 100vh;
-  background: var(--surface-card);
+  width: 15%;
+  height: 100%;
   box-shadow: 2px 0 6px rgba(0,0,0,0.1);
-  padding: 1rem;
+  background-color: var(--secondary-mn-color);
   position: fixed;
-  top: 0;
   left: 0;
+  padding-top: 4%;
 }
 
 .main-content {
-  margin-left: 220px;
-  padding: 2rem;
-  width: calc(100% - 220px);
-  background-color: rgb(53, 53, 53);
-  border-radius: 10px;
+  margin-left: 15%;
+  height: 100%;
+  background-color: whitesmoke;
+  width: calc(100% - 15%);
+  color: rgb(34, 34, 34);
+  padding-top: calc(4% + 2rem);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
 }

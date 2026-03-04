@@ -4,10 +4,11 @@ import { MenuItem } from 'primeng/api';
 import { Menu } from 'primeng/menu';
 import { AuthService } from '../../services/auth-service';
 import { ToastModule } from 'primeng/toast';
+import { UpperBar } from '../upper-bar/upper-bar';
 
 @Component({
   selector: 'app-main-layout',
-  imports: [ Menu, RouterOutlet, ToastModule ],
+  imports: [ Menu, RouterOutlet, ToastModule, UpperBar ],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.css',
 })
@@ -19,10 +20,10 @@ export class MainLayout implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
-        label: 'General',
+        label: 'Menu',
         items: [
           {
-            label: 'Home',
+            label: 'Dashboard',
             icon: 'pi pi-home',
             routerLink: '/inside/home'
           },

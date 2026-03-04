@@ -1,28 +1,31 @@
 <p-toast></p-toast>
 
-<div class="form-section">
-    <h2>Hi again</h2>
+<div class="login-section">
+    <div class="form-section">
+        <h2 class="text-2xl font-bold">Hi again</h2>
 
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <p-inputgroup>
-            <p-inputgroup-addon>
-                <i class="pi pi-user"></i>
-            </p-inputgroup-addon>
-            <input id="username" formControlName="username" pInputText placeholder="Username" />
-        </p-inputgroup>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="pi pi-user"></i>
+                </p-inputgroup-addon>
+                <input id="username" formControlName="username" pInputText placeholder="Username" />
+            </p-inputgroup>
 
-        <p-inputgroup>
-            <p-inputgroup-addon>
-                <i class="pi pi-key"></i>
-            </p-inputgroup-addon>
-            <p-password id="password" formControlName="password" [feedback]="false" [toggleMask]="true" placeholder="Password"/>
-        </p-inputgroup>
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="pi pi-key"></i>
+                </p-inputgroup-addon>
+                <p-password id="password" formControlName="password" [feedback]="false" [toggleMask]="true" placeholder="Password"/>
+            </p-inputgroup>
 
-        <button pButton>
-            <i class="pi pi-arrow-up-right" pButtonIcon></i>
-            <span pButtonLabel><b>LOGIN</b></span>
-        </button>
-    </form>
+            <button pButton>
+                <i class="pi pi-arrow-up-right" pButtonIcon></i>
+                <span class="text-[var(--terciary-mn-color)]" pButtonLabel><b>LOGIN</b></span>
+            </button>
+        </form>
 
-    <span class="spanLink" routerLink="/register" >Don't have an account?</span>
+        <span class="spanLink" routerLink="/register" >Don't have an account?</span>
+    </div>
+
 </div>
