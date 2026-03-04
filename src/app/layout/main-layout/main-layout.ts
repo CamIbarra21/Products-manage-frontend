@@ -53,10 +53,6 @@ export class MainLayout implements OnInit {
             routerLink: '/inside/stocks'
           },
           {
-            label: 'Account',
-            icon: 'pi pi-user'
-          },
-          {
             label: 'Signout',
             icon: 'pi pi-sign-out',
             linkClass: '!text-red-500 dark:!text-red-400',

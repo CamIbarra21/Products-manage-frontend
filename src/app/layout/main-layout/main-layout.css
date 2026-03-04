@@ -22,8 +22,5 @@
   background-color: whitesmoke;
   width: calc(100% - 15%);
   color: rgb(34, 34, 34);
-  padding-top: calc(4% + 2rem);
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 4%;
 }

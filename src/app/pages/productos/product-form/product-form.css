@@ -5,11 +5,8 @@
     justify-content: center;
     align-items: center;
     background-color: whitesmoke;
-    padding: 20px 20px 40px 20px;
     border-radius: 20px;
-    margin: 100px auto;
-    box-shadow: 10px 10px 30px rgba(226, 226, 226, 0.3);
-
+    margin: 30px auto;
 }
 
 .form-section > h2, form > span {
@@ -29,7 +26,7 @@ form > p-inputgroup {
     height: 3rem;
 }
 
-form > button {
+.buttons-section > button {
     height: 4rem;
-    width: 30%;
+    width: auto;
 }

@@ -1,7 +1,7 @@
 <p-toast></p-toast>
 
 <div class="form-section">
-    <h2>{{ isUpdate ? 'Update product' : 'New product' }}</h2>
+    <h2 class="text-xl mb-4 font-bold text-shadow-lg/20 text-shadow-indigo-500">{{ isUpdate ? 'Update product' : 'New product' }}</h2>
 
     <form [formGroup]="productForm" (ngSubmit)="save()">
         <p-inputgroup>
@@ -53,15 +53,19 @@
         </div>-->
 
 
-        <button pButton type="submit">
-            <i class="pi pi-save" pButtonIcon></i>
-            <span pButtonLabel><b>Save</b></span>
-        </button>
+        <div class="buttons-section flex flex-row gap-4">
+            
+            <button pButton type="submit">
+                <i class="pi pi-save" pButtonIcon></i>
+                <span pButtonLabel><b>Save</b></span>
+            </button>
 
-        <button routerLink="/inside/products" pButton>
-            <i class="pi pi-times" pButtonIcon></i>
-            <span pButtonLabel><b>Cancel</b></span>
-        </button>
+            <button routerLink="/inside/products" pButton>
+                <i class="pi pi-times" pButtonIcon></i>
+                <span pButtonLabel><b>Cancel</b></span>
+            </button>
+        
+        </div>
 
     </form>
 </div>

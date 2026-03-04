@@ -12,7 +12,6 @@ import Aura from '@primeuix/themes/aura';
 })
 export class App implements OnInit {
   protected readonly title = signal('Productos_web_S1C5');
-
   ngOnInit(): void {
     const MyPreset = definePreset(Aura, {
       semantic: {
@@ -41,6 +40,12 @@ export class App implements OnInit {
             icon: {
               focusColor: 'var(--secondary-bg-color)',
             }
+          }
+        },
+        toolbar: {
+          root: {
+            background: 'none',
+            borderRadius: '0'
           }
         }
       }

@@ -1,4 +1,29 @@
 <div class="upperbar-section">
-    <p>upper-bar works!</p>
+    <p-toolbar>
+    <ng-template #start>
+        <div class="w-8 h-8 bg-[var(--primary-bg-color)] rounded-full flex justify-center items-center">
+            <p class="text-[var(--terciary-mn-color)] text-sm font-extrabold">PM</p>
+        </div>
+        <p class="ml-2 font-[Audiowide] font-extrabold text-[var(--primary-bg-color)]">PROD-MANAGE</p>
+    </ng-template>
 
+    <ng-template #center>
+        <p-iconfield iconPosition="left">
+            <p-inputicon class="pi pi-search" />
+            <input type="text" pInputText placeholder="Search" />
+        </p-iconfield>
+    </ng-template>
+
+    <ng-template #end>
+        <p-splitbutton label="Save" [model]="items" text severity="secondary">
+            <ng-template #content>
+                <span class="flex items-center font-bold">
+                    <img [src]="user.profileImage" [alt]="user.fullname" class="w-6 h-6 mr-4 rounded-full object-cover shadow-sm" />
+                    <span>{{ user.username }}</span>
+                </span>
+            </ng-template>
+        </p-splitbutton>
+
+    </ng-template>
+</p-toolbar>
 </div>
