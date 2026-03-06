@@ -1,0 +1,14 @@
+.stocks-section {
+    padding: 2rem;
+    background-color: whitesmoke;
+}
+
+.new-stock-form > p-inputgroup {
+    padding-top: 10px;
+    padding-bottom: 2rem;
+}
+
+.new-stock-form > p {
+    font-weight: 800;
+    font-size: 16px;
+}

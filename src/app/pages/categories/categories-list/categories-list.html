@@ -1,25 +1,27 @@
 <p-toast></p-toast>
 
-<div class="add-category-section">
-    <p-inputgroup>
-        <p-button (click)="addCategory()" label="Add" />
-        <input [(ngModel)]="newCategory" pInputText placeholder="New category" />
-    </p-inputgroup>
-</div>
+<div class="category-list-section">
+    <div class="add-category-section">
+        <p-inputgroup>
+            <p-button (click)="addCategory()" label="Add" />
+            <input [(ngModel)]="newCategory" pInputText placeholder="New category" />
+        </p-inputgroup>
+    </div>
 
-<div class="card">
-    <p-table [value]="categories">
-        <ng-template #header>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
-        </ng-template>
-        <ng-template #body let-category>
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-            </tr>
-        </ng-template>
-    </p-table>
+    <div class="card">
+        <p-table [value]="categories">
+            <ng-template #header>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-category>
+                <tr>
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
 </div>

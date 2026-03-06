@@ -1,0 +1,9 @@
+.upperbar-section{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 9%;
+    background-color: rgba(245, 245, 245, 0.4);
+    z-index: 1000;
+}

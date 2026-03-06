@@ -1,5 +1,5 @@
+<p-toast></p-toast>
 <div class="stocks-section">
-    <p-toast></p-toast>
 
     <p-tabs value="0">
         <p-tablist>
@@ -8,14 +8,46 @@
             <p-tab value="2">Update stock</p-tab>
         </p-tablist>
         <p-tabpanels>
-            <p-tabpanel value="0">
-                <p class="m-0">
-                    Looking for stock
-                </p>
+            <p-tabpanel class="flex flex-col gap-4" value="0">
+                    <form [formGroup]="searchForm" (ngSubmit)="searchStock()" class="flex flex-col gap-4">
+                        <p-inputgroup>
+                            <p-inputgroup-addon>
+                                <i class="pi pi-shop"></i>
+                            </p-inputgroup-addon>
+                            <p-select [options]="sourceStores" formControlName="selectedSearchStore" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Store" class="search-select-store">
+                                <ng-template let-store #store>
+                                    <span>{{ store.name }}</span>
+                                </ng-template>
+                            </p-select>
+
+                        </p-inputgroup>
+
+                        <p-inputgroup>
+                            <p-inputgroup-addon>
+                                <i class="pi pi-check-square"></i>
+                            </p-inputgroup-addon>
+                            <p-select [options]="sourceProducts" formControlName="selectedSearchProduct" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Store" class="search-select-store">
+                                <ng-template let-product #product>
+                                    <span>{{ product.name }}</span>
+                                </ng-template>
+                            </p-select>
+                        </p-inputgroup>
+
+                        <button pButton>
+                            <i class="pi pi-arrow-up-right" pButtonIcon></i>
+                            <span pButtonLabel><b>Search stock</b></span>
+                        </button>
+                    </form>
+                    @if (searchSuccess) {
+                        <div class="search-result">
+                            <p-message severity="info">Stock for this product in this store is <b>{{ searchResult }}</b></p-message>
+                        </div>
+                    }                    
             </p-tabpanel>
 
             <p-tabpanel value="1">
-                <form [formGroup]="addForm" (ngSubmit)="addStock()">
+                <form [formGroup]="addForm" (ngSubmit)="addStock()" class="flex flex-col new-stock-form">
+                    <p>Store(s)</p>
                     <p-inputgroup>
                         <p-picklist
                             [source]="sourceStores"
@@ -34,6 +66,7 @@
                         </p-picklist>
                     </p-inputgroup>
 
+                    <p>Product(s)</p>
                     <p-inputgroup>
                         <p-picklist
                             [source]="sourceProducts"
@@ -52,11 +85,13 @@
                         </p-picklist>
                     </p-inputgroup>
 
+                    <p>Quantity</p>
+                    <span class="text-slate-400 italic text-sm">It is the same for all products selected</span>
                     <p-inputgroup>
                         <p-inputgroup-addon>
                             <i class="pi pi-cart-arrow-down"></i>
                         </p-inputgroup-addon>
-                        <p-inputnumber formControlName="quantity"  [showButtons]="true" />
+                        <p-inputnumber formControlName="quantity"  [showButtons]="true" [min]="1" />
                     </p-inputgroup>
 
                     <button pButton>
@@ -67,9 +102,42 @@
             </p-tabpanel>
 
             <p-tabpanel value="2">
-                <p>
-                    Updating stock
-                </p>
+                <form class="flex flex-col gap-4" [formGroup]="updateForm" (ngSubmit)="updateStock()">
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                            <i class="pi pi-shop"></i>
+                        </p-inputgroup-addon>
+                        <p-select [options]="sourceStores" formControlName="selectedUpdateStore" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Store" class="search-select-store">
+                            <ng-template let-store #store>
+                                <span>{{ store.name }}</span>
+                            </ng-template>
+                        </p-select>
+
+                    </p-inputgroup>
+
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                            <i class="pi pi-check-square"></i>
+                        </p-inputgroup-addon>
+                        <p-select [options]="sourceProducts" formControlName="selectedUpdateProduct" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Product" class="search-select-store">
+                            <ng-template let-product #product>
+                                <span>{{ product.name }}</span>
+                            </ng-template>
+                        </p-select>
+                    </p-inputgroup>
+
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                            <i class="pi pi-cart-arrow-down"></i>
+                        </p-inputgroup-addon>
+                        <p-inputnumber formControlName="quantityUpdate"  [showButtons]="true" [min]="1" />
+                    </p-inputgroup>
+
+                    <button pButton>
+                        <i class="pi pi-arrow-up-right" pButtonIcon></i>
+                        <span pButtonLabel><b>Update stock</b></span>
+                    </button>
+                </form>
             </p-tabpanel>
         </p-tabpanels>
     </p-tabs>

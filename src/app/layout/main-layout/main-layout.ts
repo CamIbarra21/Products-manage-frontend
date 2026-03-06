@@ -4,25 +4,29 @@ import { MenuItem } from 'primeng/api';
 import { Menu } from 'primeng/menu';
 import { AuthService } from '../../services/auth-service';
 import { ToastModule } from 'primeng/toast';
+import { UpperBar } from '../upper-bar/upper-bar';
+import { ButtonModule } from 'primeng/button';
+import { DrawerModule } from 'primeng/drawer';
 
 @Component({
   selector: 'app-main-layout',
-  imports: [ Menu, RouterOutlet, ToastModule ],
+  imports: [ Menu, RouterOutlet, ToastModule, UpperBar, ButtonModule, DrawerModule ],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.css',
 })
 export class MainLayout implements OnInit {
   items: MenuItem[] | undefined;
-
+  sidebarVisible: boolean = true;
+  openSidebarDrawer: boolean = false;
   constructor (private authService: AuthService) {}
 
   ngOnInit(): void {
     this.items = [
       {
-        label: 'General',
+        label: 'Menu',
         items: [
           {
-            label: 'Home',
+            label: 'Dashboard',
             icon: 'pi pi-home',
             routerLink: '/inside/home'
           },
@@ -52,10 +56,6 @@ export class MainLayout implements OnInit {
             routerLink: '/inside/stocks'
           },
           {
-            label: 'Account',
-            icon: 'pi pi-user'
-          },
-          {
             label: 'Signout',
             icon: 'pi pi-sign-out',
             linkClass: '!text-red-500 dark:!text-red-400',
@@ -68,5 +68,13 @@ export class MainLayout implements OnInit {
     ]
   }
 
+  toggleSidebar() {
+    this.openSidebarDrawer = !this.openSidebarDrawer;
+    console.log("Cambio drawer")
+  }
 
+  sidebarVisibility() {
+    this.sidebarVisible = !this.sidebarVisible;
+  }
+  
 }

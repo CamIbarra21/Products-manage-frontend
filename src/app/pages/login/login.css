@@ -1,3 +1,12 @@
+.login-section {
+    background-color: var(--primary-bg-color);
+    height: 100%;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form-section {
     width: 40%;
     display: flex;
@@ -7,13 +16,12 @@
     background-color: whitesmoke;
     padding: 20px 20px 40px 20px;
     border-radius: 20px;
-    margin: 100px auto;
     box-shadow: 10px 10px 30px rgba(226, 226, 226, 0.3);
-
 }
 
 .form-section > h2 {
     color: black;
+    padding-bottom: 15px;
 }
 
 .form-section > form {
@@ -34,9 +42,20 @@ form > button {
     width: 30%;
 }
 
+button > i {
+    color: var(--terciary-mn-color);
+}
+
 .spanLink {
     color: rgb(45, 27, 202);
     margin-top: 30px;
     cursor: pointer;
     font-style: italic;
+}
+
+@media (max-width: 600px) {
+   .form-section, form > button, .form-section > form {
+    width: 85%;
+   }
+
 }
