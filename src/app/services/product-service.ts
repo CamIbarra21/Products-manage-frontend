@@ -53,4 +53,15 @@ export class ProductService {
     return this.http.get<APIResponse<any>>(`${this.baseUrl}/count`);
   }
 
+  getProductsWithMoreStock(quantity: number = 5): Observable<APIResponse<any[]>> {
+    return this.http.get<APIResponse<any[]>>(`${this.baseUrl}/moreStock?nProducts=${quantity}`);
+  }
+
+  getProductsByCategory(): Observable<APIResponse<any[]>> {
+    return this.http.get<APIResponse<any[]>>(`${this.baseUrl}/byCategory`);
+  }
+
+  getProductsByStockUpdateMonth(idStore: number): Observable<APIResponse<any[]>> {
+    return this.http.get<APIResponse<any[]>>(`${this.baseUrl}/byStockUpdateMonth?storeId=${idStore}`);
+  }
 }
