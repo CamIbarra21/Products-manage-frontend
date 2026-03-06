@@ -14,6 +14,7 @@ import { UpperBar } from '../upper-bar/upper-bar';
 })
 export class MainLayout implements OnInit {
   items: MenuItem[] | undefined;
+  sidebarVisible: boolean = true;
 
   constructor (private authService: AuthService) {}
 
@@ -65,5 +66,9 @@ export class MainLayout implements OnInit {
     ]
   }
 
+  toggleSidebar() {
+    this.sidebarVisible = !this.sidebarVisible;
+    console.log("Cambio visibilidad")
+  }
 
 }

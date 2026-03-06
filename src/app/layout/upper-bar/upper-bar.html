@@ -1,10 +1,19 @@
 <div class="upperbar-section">
     <p-toolbar>
     <ng-template #start>
-        <div class="w-8 h-8 bg-[var(--primary-bg-color)] rounded-full flex justify-center items-center">
-            <p class="text-[var(--terciary-mn-color)] text-sm font-extrabold">PM</p>
+        <button 
+            pButton 
+            icon="pi pi-bars"
+            [text]="true"
+            class="!text-[var(--primary-bg-color)] md:!hidden" 
+            (click)="menuClicked()">
+        </button>
+        <div class="flex dlex-row items-center logo-section">       
+            <div class="w-8 h-8 bg-[var(--primary-bg-color)] rounded-full flex justify-center items-center">
+                <p class="text-[var(--terciary-mn-color)] text-sm font-extrabold">PM</p>
+            </div>
+            <p class="ml-2 font-[Audiowide] font-extrabold text-[var(--primary-bg-color)] max-md:!hidden">PROD-MANAGE</p>
         </div>
-        <p class="ml-2 font-[Audiowide] font-extrabold text-[var(--primary-bg-color)]">PROD-MANAGE</p>
     </ng-template>
 
     <ng-template #center>

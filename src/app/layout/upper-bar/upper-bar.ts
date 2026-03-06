@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
 import { Toolbar } from 'primeng/toolbar';
@@ -17,6 +17,8 @@ export class UpperBar implements OnInit {
   items: MenuItem[] | undefined;
   user: any;
 
+  @Output() onToggle = new EventEmitter<void>();
+
   ngOnInit() {
     const userString = localStorage.getItem("actualUser");
     this.user = JSON.parse(userString ?? '{ fullname: sin usuario }');
@@ -31,5 +33,9 @@ export class UpperBar implements OnInit {
             icon: 'pi pi-times'
         }
     ];
+  }
+
+  menuClicked() {
+    this.onToggle.emit();
   }
 }

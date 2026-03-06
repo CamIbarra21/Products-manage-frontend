@@ -1,11 +1,15 @@
 <p-toast></p-toast>
 
-<app-upper-bar></app-upper-bar>
+<app-upper-bar (onToggle)="toggleSidebar()"></app-upper-bar>
 
-<div class="layout">    
-    <div class="sidebar">
-        <p-menu [model]="items"></p-menu>
-    </div>
+<div class="layout">
+    @if (sidebarVisible)
+    {
+        <div class="sidebar" >
+            <p-menu [model]="items"></p-menu>
+        </div>
+    }
+    
 
     <div class="main-content">
         <router-outlet></router-outlet>
