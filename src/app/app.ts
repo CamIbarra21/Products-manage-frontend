@@ -48,6 +48,11 @@ export class App implements OnInit {
             background: 'none',
             borderRadius: '0'
           }
+        },
+        drawer: {
+          root: {
+            background: 'var(--secondary-mn-color)'
+          }
         }
       }
     });

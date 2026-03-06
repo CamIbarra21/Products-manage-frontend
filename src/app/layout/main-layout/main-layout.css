@@ -3,12 +3,12 @@
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  background-color: red;
+  background-color: white;
 }
 
 .sidebar {
   width: 15%;
-  min-width: 200px; /* Evita que el menú se "apriete" demasiado */
+  min-width: 200px;
   max-width: 300px;
   height: 100%;
   background-color: var(--secondary-mn-color);
