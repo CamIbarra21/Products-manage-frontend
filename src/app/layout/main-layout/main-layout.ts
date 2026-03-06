@@ -76,4 +76,5 @@ export class MainLayout implements OnInit {
   sidebarVisibility() {
     this.sidebarVisible = !this.sidebarVisible;
   }
+  
 }

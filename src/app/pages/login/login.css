@@ -52,3 +52,10 @@ button > i {
     cursor: pointer;
     font-style: italic;
 }
+
+@media (max-width: 600px) {
+   .form-section, form > button, .form-section > form {
+    width: 85%;
+   }
+
+}
