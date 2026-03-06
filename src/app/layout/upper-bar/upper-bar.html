@@ -6,9 +6,9 @@
             icon="pi pi-bars"
             [text]="true"
             class="!text-[var(--primary-bg-color)] md:!hidden" 
-            (click)="menuClicked()">
+            (click)="btnBurguerClicked()">
         </button>
-        <div class="flex dlex-row items-center logo-section">       
+        <div class="flex dlex-row items-center logo-section" (click)="menuClicked()">       
             <div class="w-8 h-8 bg-[var(--primary-bg-color)] rounded-full flex justify-center items-center">
                 <p class="text-[var(--terciary-mn-color)] text-sm font-extrabold">PM</p>
             </div>

@@ -1,16 +1,22 @@
 <p-toast></p-toast>
 
-<app-upper-bar (onToggle)="toggleSidebar()"></app-upper-bar>
+<app-upper-bar (onToggle)="toggleSidebar()" (showSidebar)="sidebarVisibility()"></app-upper-bar>
 
 <div class="layout">
     @if (sidebarVisible)
     {
-        <div class="sidebar" >
+        <div class="sidebar hidden md:block" >
             <p-menu [model]="items"></p-menu>
         </div>
     }
-    
 
+    <p-drawer [(visible)]="openSidebarDrawer" class="md:!hidden">
+        <ng-template pTemplate="header">
+            <span class="font-semibold text-xl">Hiraoka Admin</span>
+        </ng-template>
+        <p-menu [model]="items" styleClass="w-full border-none"></p-menu>
+    </p-drawer>
+    
     <div class="main-content">
         <router-outlet></router-outlet>
     </div>

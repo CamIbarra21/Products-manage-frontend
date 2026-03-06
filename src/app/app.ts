@@ -33,7 +33,8 @@ export class App implements OnInit {
         menu: {
           root: {
             background: 'var(--secondary-mn-color)',
-            borderColor: 'none'
+            borderColor: 'none',
+            borderRadius: '0'
           },
           item: {
             focusColor: 'var(--secondary-bg-color)',

@@ -18,6 +18,7 @@ export class UpperBar implements OnInit {
   user: any;
 
   @Output() onToggle = new EventEmitter<void>();
+  @Output() showSidebar = new EventEmitter<void>();
 
   ngOnInit() {
     const userString = localStorage.getItem("actualUser");
@@ -36,6 +37,9 @@ export class UpperBar implements OnInit {
   }
 
   menuClicked() {
+    this.showSidebar.emit();
+  }
+  btnBurguerClicked() {
     this.onToggle.emit();
   }
 }
